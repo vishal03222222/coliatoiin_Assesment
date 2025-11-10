@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Coalition - Patient Dashboard (Jessica Taylor)</title>
+  <link rel="stylesheet" href="Style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="logo">Tech.Care</div>
+      <div class="patients-title">Patients</div>
+      <div id="patientList" class="patient-list"></div>
+      <div class="note">Tip: Click a patient to view details</div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="title">Patient Dashboard — Jessica Taylor</div>
+        <div class="profile">Reviewer</div>
+      </header>
+
+      <section class="content">
+        <div class="left-col">
+          <div class="card chart-card">
+            <div class="card-head">
+              <h3>Diagnosis History</h3>
+              <div class="muted">Last 6 months</div>
+            </div>
+            <div class="chart-wrap">
+              <canvas id="bpChart"></canvas>
+            </div>
+
+            <div class="vitals-grid">
+              <div class="vit-card vit-blue">
+                <div class="label">Respiratory Rate</div>
+                <div id="respiratory" class="big">-- bpm</div>
+                <div id="respiratory-level" class="muted">--</div>
+              </div>
+              <div class="vit-card vit-pink">
+                <div class="label">Temperature</div>
+                <div id="temperature" class="big">-- °F</div>
+                <div id="temperature-level" class="muted">--</div>
+              </div>
+              <div class="vit-card vit-yellow">
+                <div class="label">Heart Rate</div>
+                <div id="heart" class="big">-- bpm</div>
+                <div id="heart-level" class="muted">--</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card diag-list">
+            <h4>Diagnostic List</h4>
+            <div id="diagnosticList"></div>
+          </div>
+        </div>
+
+        <aside class="right-col">
+          <div class="card profile-card">
+            <img id="avatar" class="avatar" alt="avatar" />
+            <h2 id="pName">Jessica Taylor</h2>
+            <div id="pMeta" class="muted">Female • 28</div>
+
+            <div class="info-block">
+              <div class="info-label">Date Of Birth</div>
+              <div id="pDob" class="info-val muted"></div>
+
+              <div class="info-label">Contact Info</div>
+              <div id="pPhone" class="info-val muted"></div>
+
+              <div class="info-label">Emergency Contacts</div>
+              <div id="pEmergency" class="info-val muted"></div>
+
+              <div class="info-label">Insurance Provider</div>
+              <div id="pInsurance" class="info-val muted"></div>
+
+              <button id="showAllBtn" class="cta">Show All Information</button>
+            </div>
+          </div>
+
+          <div class="card labs-card">
+            <h4>Lab Results</h4>
+            <ul id="labList" class="lab-list"></ul>
+          </div>
+        </aside>
+      </section>
+
+      <footer class="footer">Converted from Adobe XD — Candidate Submission</footer>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

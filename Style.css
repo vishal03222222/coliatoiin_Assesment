@@ -73,4 +73,51 @@
     .right-col{display:none}
     .chart-wrap{height:200px}
   }
+  :root{
+    --bg:#f6f8fb;
+    --card:#ffffff;
+    --muted:#667085;
+    --accent:#00e7c0;
+    --shadow:0 6px 20px rgba(16,24,40,0.06);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
+    background:var(--bg);
+    color:#0f172a;
+  }
+  .app{display:flex;min-height:100vh}
+  .sidebar{width:260px;padding:20px;background:#fff;border-right:1px solid #eef2f7;display:flex;flex-direction:column}
+  .logo{font-weight:700;font-size:18px;margin-bottom:8px}
+  .patients-title{color:var(--muted);font-size:13px;margin-bottom:10px}
+  .patient-list{overflow:auto;flex:1}
+  .note{color:#94a3b8;font-size:12px;margin-top:12px}
+  
+  .main{flex:1;display:flex;flex-direction:column;padding:18px;gap:12px}
+  .topbar{display:flex;justify-content:space-between;align-items:center}
+  .content{display:flex;gap:18px}
+  .left-col{flex:1;display:flex;flex-direction:column;gap:12px}
+  .right-col{width:320px;display:flex;flex-direction:column;gap:12px}
+  .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow)}
+  .chart-card .card-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+  .chart-wrap{height:260px}
+  .vitals-grid{display:flex;gap:12px;margin-top:12px}
+  .vit-card{flex:1;border-radius:10px;padding:12px;min-height:88px}
+  .vit-blue{background:#eef7ff}
+  .vit-pink{background:#fff0f6}
+  .vit-yellow{background:#fff7ed}
+  .label{color:var(--muted);font-size:13px}
+  .big{font-weight:800;font-size:20px}
+  .muted{color:var(--muted)}
+  
+  .diag-row{display:grid;grid-template-columns:1fr 1fr 150px;gap:8px;padding:8px 0;border-bottom:1px solid #eef2f7}
+  .profile-card{text-align:center}
+  .avatar{width:96px;height:96px;border-radius:12px;display:block;margin:0 auto 12px;object-fit:cover}
+  .info-block{text-align:left}
+  .info-label{font-weight:700;margin-top:10px}
+  .cta{width:100%;background:var(--accent);color:#00443C;padding:10px;border-radius:10px;border:none;cursor:pointer;margin-top:12px;font-weight:700}
+  .lab-list{margin:0;padding-left:16px;color:var(--muted)}
+  .footer{text-align:center;color:#94a3b8;margin-top:12px;font-size:13px}
+  @media(max-width:1000px){.sidebar{display:none}.right-col{display:none}}
   

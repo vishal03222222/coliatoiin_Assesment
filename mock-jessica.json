@@ -1,42 +1,27 @@
 {
-    "id": "JT-0001",
-    "name": "Jessica Taylor",
-    "dob": "1996-08-23",
-    "age": 28,
-    "gender": "Female",
-    "profilePicture": "",
-    "phone": "(415) 555-1234",
-    "emergencyContact": "(415) 555-5678",
-    "insurance": "Sunrise Health Assurance",
-    "status": "Active",
-    "lastVisit": "2025-06-01",
-    "primaryComplaint": "Routine checkup",
-    "doctor": "Dr. A. Kumar",
-    "vitals": [
-      { "bp": "122/76", "hr": 78, "spo2": "98%", "weight": "62 kg", "date": "2025-06-01" }
-    ],
-    "notes": [
-      "Follow-up in 6 months for blood pressure.",
-      "Recommended lifestyle changes; monitor salt intake.",
-      "Vaccination up to date."
-    ],
-    "bpHistory": [
-      { "year": "Oct, 2023", "systolic": 120, "diastolic": 80 },
-      { "year": "Nov, 2023", "systolic": 150, "diastolic": 100 },
-      { "year": "Dec, 2023", "systolic": 130, "diastolic": 85 },
-      { "year": "Jan, 2024", "systolic": 125, "diastolic": 82 },
-      { "year": "Feb, 2024", "systolic": 145, "diastolic": 92 },
-      { "year": "Mar, 2024", "systolic": 155, "diastolic": 100 }
-    ],
-    "visits": [
-      { "visitDate": "2025-06-01", "bp": "122/76", "notes": "Normal" }
-    ],
-    "diagnosticList": [
-      { "problem": "Hypertension", "description": "Chronic high blood pressure", "status": "Under Observation" }
-    ],
-    "labResults": [
-      { "type": "Blood Tests", "url": null },
-      { "type": "CT Scans", "url": null }
-    ]
-  }
-  
+  "name": "Jessica Taylor",
+  "gender": "Female",
+  "age": 28,
+  "profile_picture": "https://fedskillstest.ct.digital/4.png",
+  "date_of_birth": "1996-08-23",
+  "phone_number": "(415) 555-1234",
+  "emergency_contact": "(415) 555-5678",
+  "insurance_type": "Sunrise Health Assurance",
+  "diagnosis_history": [
+    {
+      "month": "March",
+      "year": 2024,
+      "blood_pressure": {
+        "systolic": { "value": 160, "levels": "Higher than Average" },
+        "diastolic": { "value": 78, "levels": "Lower than Average" }
+      },
+      "heart_rate": { "value": 78, "levels": "Lower than Average" },
+      "respiratory_rate": { "value": 20, "levels": "Normal" },
+      "temperature": { "value": 98.6, "levels": "Normal" }
+    }
+  ],
+  "diagnostic_list": [
+    { "name": "Hypertension", "description": "Chronic high blood pressure", "status": "Under Observation" }
+  ],
+  "lab_results": ["Blood Tests", "CT Scans"]
+}
