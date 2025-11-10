@@ -29,22 +29,52 @@
               <h3>Diagnosis History</h3>
               <div class="muted">Last 6 months</div>
             </div>
-            <div class="chart-wrap">
-              <canvas id="bpChart"></canvas>
+
+            <!-- UPDATED: chart-content with left chart and right summary -->
+            <div class="chart-content">
+              <div class="chart-left">
+                <div class="bp-box">
+                  <canvas id="bpChart"></canvas>
+                </div>
+              </div>
+
+              <div class="chart-right">
+                <div class="bp-summary">
+                  <div class="bp-item">
+                    <div class="dot pink"></div>
+                    <div class="label">Systolic</div>
+                    <div id="bp-systolic" class="bp-value">--</div>
+                    <div id="bp-systolic-level" class="bp-level muted">--</div>
+                  </div>
+
+                  <div class="bp-item">
+                    <div class="dot purple"></div>
+                    <div class="label">Diastolic</div>
+                    <div id="bp-diastolic" class="bp-value">--</div>
+                    <div id="bp-diastolic-level" class="bp-level muted">--</div>
+                  </div>
+                </div>
+              </div>
             </div>
+            <!-- END updated chart-content -->
 
             <div class="vitals-grid">
               <div class="vit-card vit-blue">
+                <img class="images" src="assets/respiratory-rate.png" alt="Respiratory" />
                 <div class="label">Respiratory Rate</div>
                 <div id="respiratory" class="big">-- bpm</div>
                 <div id="respiratory-level" class="muted">--</div>
               </div>
+
               <div class="vit-card vit-pink">
+                <img class="images" src="assets/temperature.png" alt="Temperature" />
                 <div class="label">Temperature</div>
                 <div id="temperature" class="big">-- °F</div>
                 <div id="temperature-level" class="muted">--</div>
               </div>
+
               <div class="vit-card vit-yellow">
+                <img class="images" src="assets/heart-bpm.png" alt="Heart Rate" />
                 <div class="label">Heart Rate</div>
                 <div id="heart" class="big">-- bpm</div>
                 <div id="heart-level" class="muted">--</div>
