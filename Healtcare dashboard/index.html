@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Coalition - Patient Dashboard (Jessica Taylor)</title>
+  <link rel="stylesheet" href="Style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div>
+    <div class="app">
+ <div style="width: 100px;border:2px">
+
+ </div>
+  
+           <!-- NAVBAR START -->
+<header class="top-nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <div class="logo-wrap">
+        <!-- simple logo mark + text -->
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" class="logo-mark" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 12L11 3l7 4v9l-7 5L3 12z" fill="#10B981"/>
+          <path d="M11 3l7 4-3 1.8L11 3z" fill="#06C7A6" opacity="0.9"/>
+        </svg>
+        <div class="logo-text">Tech.Care</div>
+      </div>
+    </div>
+
+    <nav class="nav-center">
+      <a class="nav-item" href="#">Overview</a>
+      <a class="nav-item active" href="#">Patients</a>
+      <a class="nav-item" href="#">Schedule</a>
+      <a class="nav-item" href="#">Message</a>
+      <a class="nav-item" href="#">Transactions</a>
+    </nav>
+
+    <div class="nav-right">
+      <div class="profile">
+        <img class="profile-avatar" src="assets/profile-thumb.png" alt="Dr. Jose Simmons" />
+        <div class="profile-info">
+          <div class="profile-name">Dr. Jose Simmons</div>
+          <div class="profile-role muted">General Practitioner</div>
+        </div>
+        <button class="icon-btn" aria-label="settings">
+          <!-- small gear icon -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="gear" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 15.5A3.5 3.5 0 1 0 12 8.5a3.5 3.5 0 0 0 0 7z" stroke="#0f172a" stroke-opacity="0.6" stroke-width="1.2"/>
+            <path d="M19.4 15a7.7 7.7 0 0 0 .1-1 7.7 7.7 0 0 0-.1-1l2-1.5-2-3.5-2.5.6a8 8 0 0 0-1.7-.9L14 3h-4l-.4 2.7c-.6.2-1.1.4-1.7.9L5.5 6.7 3.5 10l2 1.5c-.1.3-.1.7-.1 1 0 .3 0 .7.1 1l-2 1.5 2 3.5 2.5-.6c.5.5 1 .8 1.7.9L10 21h4l.4-2.7c.6-.2 1.1-.4 1.7-.9l2.5.6 2-3.5-2-1.5z" stroke="#0f172a" stroke-opacity="0.45" stroke-width="0.9" fill="none"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- NAVBAR END -->
+        <aside class="sidebar">
+          <div class="logo">Tech.Care</div>
+          <div class="patients-title">Patients</div>
+          <div id="patientList" class="patient-list"></div>
+          <div class="note">Tip: Click a patient to view details</div>
+        </aside>
+    
+        <main class="main">
+          <header class="topbar">
+            <div class="title">Patient Dashboard — Jessica Taylor</div>
+            <div class="profile">Reviewer</div>
+          </header>
+    
+          <section class="content">
+            <div class="left-col">
+              <div class="card chart-card">
+                <div class="card-head">
+                  <h3>Diagnosis History</h3>
+                  <div class="muted">Last 6 months</div>
+                </div>
+    
+                <!-- UPDATED: chart-content with left chart and right summary -->
+                <div class="chart-content">
+                  <div class="chart-left">
+                    <div class="bp-box">
+                      <canvas id="bpChart"></canvas>
+                    </div>
+                  </div>
+    
+                  <div class="chart-right">
+                    <div class="bp-summary">
+                      <div class="bp-item">
+                        <div class="dot pink"></div>
+                        <div class="label">Systolic</div>
+                        <div id="bp-systolic" class="bp-value">--</div>
+                        <div id="bp-systolic-level" class="bp-level muted">--</div>
+                      </div>
+    
+                      <div class="bp-item">
+                        <div class="dot purple"></div>
+                        <div class="label">Diastolic</div>
+                        <div id="bp-diastolic" class="bp-value">--</div>
+                        <div id="bp-diastolic-level" class="bp-level muted">--</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- END updated chart-content -->
+    
+                <div class="vitals-grid">
+                  <div class="vit-card vit-blue">
+                    <img class="images" src="assets/respiratory-rate.png" alt="Respiratory" />
+                    <div class="label">Respiratory Rate</div>
+                    <div id="respiratory" class="big">-- bpm</div>
+                    <div id="respiratory-level" class="muted">--</div>
+                  </div>
+    
+                  <div class="vit-card vit-pink">
+                    <img class="images" src="assets/temperature.png" alt="Temperature" />
+                    <div class="label">Temperature</div>
+                    <div id="temperature" class="big">-- °F</div>
+                    <div id="temperature-level" class="muted">--</div>
+                  </div>
+    
+                  <div class="vit-card vit-yellow">
+                    <img class="images" src="assets/heart-bpm.png" alt="Heart Rate" />
+                    <div class="label">Heart Rate</div>
+                    <div id="heart" class="big">-- bpm</div>
+                    <div id="heart-level" class="muted">--</div>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="card diag-list">
+                <h4>Diagnostic List</h4>
+                <div id="diagnosticList"></div>
+              </div>
+            </div>
+    
+            <aside class="right-col">
+              <div class="card profile-card">
+                <img id="avatar" class="avatar" alt="avatar" />
+                <h2 id="pName">Jessica Taylor</h2>
+                <div id="pMeta" class="muted">Female • 28</div>
+    
+                <div class="info-block">
+                  <div class="info-label">Date Of Birth</div>
+                  <div id="pDob" class="info-val muted"></div>
+    
+                  <div class="info-label">Contact Info</div>
+                  <div id="pPhone" class="info-val muted"></div>
+    
+                  <div class="info-label">Emergency Contacts</div>
+                  <div id="pEmergency" class="info-val muted"></div>
+    
+                  <div class="info-label">Insurance Provider</div>
+                  <div id="pInsurance" class="info-val muted"></div>
+    
+                  <button id="showAllBtn" class="cta">Show All Information</button>
+                </div>
+              </div>
+    
+              <div class="card labs-card">
+                <h4>Lab Results</h4>
+                <ul id="labList" class="lab-list"></ul>
+              </div>
+            </aside>
+          </section>
+    
+          <footer class="footer">Converted from Adobe XD — Candidate Submission</footer>
+        </main>
+      </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

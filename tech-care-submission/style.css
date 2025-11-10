@@ -1,0 +1,25 @@
+:root {
+    --color-primary: #01F0D0; /* Example */
+    --color-background: #F6F7F8;
+    --color-card-bg: #FFFFFF;
+    --text-primary: #072635;
+    --text-secondary: #707070;
+    /* ... etc. */
+}
+@media (max-width: 1200px) {
+    .dashboard-container {
+        grid-template-columns: 1fr 300px; /* Hide sidebar or make it smaller */
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        grid-template-columns: 1fr; /* Stack all columns */
+    }
+}
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 280px 1fr 300px; /* Sidebar | Main | Profile */
+    gap: 20px;
+    /* ... other styles */
+}

@@ -120,4 +120,96 @@
   .lab-list{margin:0;padding-left:16px;color:var(--muted)}
   .footer{text-align:center;color:#94a3b8;margin-top:12px;font-size:13px}
   @media(max-width:1000px){.sidebar{display:none}.right-col{display:none}}
-  
+  /* NAVBAR */
+.top-nav {
+  background: transparent;
+  padding: 18px 28px;
+  display: flex;
+  justify-content: center; /* centers the inner bar */
+  box-sizing: border-box;
+}
+
+.nav-inner {
+  width: 100%;
+  max-width: 1200px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(16,24,40,0.06);
+  display: flex;
+  align-items: center;
+  padding: 10px 18px;
+  gap: 12px;
+}
+
+/* left */
+.nav-left { display:flex; align-items:center; flex:0 0 auto; }
+.logo-wrap { display:flex; align-items:center; gap:10px; }
+.logo-mark { display:block; border-radius:6px; }
+.logo-text { font-weight:700; font-size:18px; color:#0f172a; }
+
+/* center nav */
+.nav-center {
+  display:flex;
+  gap: 18px;
+  margin: 0 auto; /* keep center items centered */
+  align-items:center;
+  flex: 1 1 auto;
+  justify-content: center;
+}
+.nav-item {
+  font-size:14px;
+  color: #475569;
+  padding: 8px 12px;
+  border-radius: 999px;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  transition: background .15s, color .15s;
+}
+.nav-item:hover {
+  background: rgba(6, 199, 166, 0.06);
+  color:#0f172a;
+}
+
+/* active pill */
+.nav-item.active {
+  background: #00E7C0;       /* teal pill color (adjust to match) */
+  color: #003733;            /* dark text inside pill */
+  box-shadow: 0 6px 18px rgba(0, 231, 192, 0.12);
+  font-weight:700;
+}
+
+/* right profile */
+.nav-right { display:flex; align-items:center; gap:12px; flex:0 0 auto; }
+.profile { display:flex; align-items:center; gap:10px; padding-left:8px; }
+.profile-avatar {
+  width:40px; height:40px; border-radius:50%; object-fit:cover; border: 2px solid #eef6f4;
+}
+.profile-info { display:flex; flex-direction:column; line-height:1; }
+.profile-name { font-size:13px; font-weight:700; color:#0f172a; }
+.profile-role { font-size:12px; color:#667085; }
+
+/* small circular icon button */
+.icon-btn {
+  background: #f8fafb;
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-left:6px;
+}
+.icon-btn svg { display:block; width:16px; height:16px; }
+
+/* muted helper */
+.muted { color: #667085; font-size:13px; }
+
+/* Responsiveness */
+@media (max-width: 900px) {
+  .nav-center { display:none; } /* hide center nav on small screens */
+  .nav-inner { padding: 8px; }
+  .logo-text { font-size:16px; }
+}
