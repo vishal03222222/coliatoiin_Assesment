@@ -1,72 +1,113 @@
-// --- app.js (only the relevant parts shown; replace the earlier fetchPatientsFromApi with this) ---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Coalition - Patient Dashboard (Jessica Taylor)</title>
 
-/**
- * Prompt-based Basic Auth approach (DOES NOT hard-code the auth token).
- * - On first real API call, prompts for username/password.
- * - Builds Authorization header at runtime using btoa() -> 'Basic ' + btoa(`${user}:${pass}`)
- * - Falls back to local mock if API fails.
- */
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-let _cachedAuthHeader = null;
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="logo">Tech.Care</div>
+      <div class="patients-title">Patients</div>
+      <div id="patientList" class="patient-list"></div>
+      <div class="note">Tip: Click a patient to view details</div>
+    </aside>
 
-function getAuthHeaderPrompt() {
-  // If previously cached, reuse (avoids repeated prompts in same session)
-  if (_cachedAuthHeader) return _cachedAuthHeader;
+    <main class="main">
+      <header class="topbar">
+        <div class="title">Patient Dashboard — Jessica Taylor</div>
+        <div class="profile">Reviewer</div>
+      </header>
 
-  // Prompt the person running the demo to enter credentials.
-  // For the FED skills test, they can enter:
-  // username: coalition
-  // password: skills-test
-  const user = window.prompt("Enter API username (demo: coalition):", "");
-  if (!user) return null;
-  const pass = window.prompt("Enter API password (demo: skills-test):", "");
-  if (pass === null) return null;
+      <section class="content">
+        <div class="left-col">
+          <div class="card chart-card">
+            <div class="card-head">
+              <h3>Diagnosis History</h3>
+              <div class="muted">Last 6 months</div>
+            </div>
+            <div class="chart-wrap">
+              <canvas id="bpChart"></canvas>
+            </div>
 
-  const token = btoa(`${user}:${pass}`);
-  _cachedAuthHeader = `Basic ${token}`;
-  return _cachedAuthHeader;
-}
+            <div class="vitals-grid">
+              <div class="vit-card vit-blue">
+                <div class="label">Respiratory Rate</div>
+                <div class="big">20 bpm</div>
+                <div class="muted">Normal</div>
+              </div>
+              <div class="vit-card vit-pink">
+                <div class="label">Temperature</div>
+                <div class="big">98.6°F</div>
+                <div class="muted">Normal</div>
+              </div>
+              <div class="vit-card vit-yellow">
+                <div class="label">Heart Rate</div>
+                <div class="big">78 bpm</div>
+                <div class="muted">Lower than Average</div>
+              </div>
+            </div>
+          </div>
 
-async function fetchPatientsFromApi() {
-  try {
-    // If you want to allow pre-supplied creds (e.g. injected by server/build),
-    // you can add a window.__API_AUTH variable in index.html <script> tag.
-    let authHeader = null;
-    if (window.__API_AUTH && typeof window.__API_AUTH === "string") {
-      authHeader = window.__API_AUTH; // developer injected: 'Basic <base64>'
-    } else {
-      // Ask the person viewing the demo to enter credentials
-      authHeader = getAuthHeaderPrompt();
-    }
+          <div class="card diag-list">
+            <h4>Diagnostic List</h4>
+            <div class="diag-row">
+              <div class="col1">Hypertension</div>
+              <div class="col2">Chronic high blood pressure</div>
+              <div class="col3">Under Observation</div>
+            </div>
+            <div class="diag-more">
+              <div>Type 2 Diabetes — Insulin resistance — Cured</div>
+              <div>Asthma — Recurrent episodes — Inactive</div>
+            </div>
+          </div>
+        </div>
 
-    // If user cancelled the prompt, or no auth header available, fallback immediately
-    if (!authHeader) throw new Error("No credentials provided - using local mock");
+        <aside class="right-col">
+          <div class="card profile-card">
+            <img id="avatar" class="avatar" alt="avatar" src="" />
+            <h2 id="pName">Jessica Taylor</h2>
+            <div id="pMeta" class="muted">Female • 28</div>
 
-    // Build URL
-    const url = "https://fedskillstest.coalitiontechnologies.workers.dev";
-    const resp = await fetch(url, {
-      method: "GET",
-      headers: {
-        "Authorization": authHeader,
-        "Accept": "application/json"
-      }
-    });
+            <div class="info-block">
+              <div class="info-label">Date Of Birth</div>
+              <div id="pDob" class="info-val muted">Aug 23, 1996</div>
 
-    if (!resp.ok) throw new Error(`API returned ${resp.status}`);
+              <div class="info-label">Contact Info</div>
+              <div id="pPhone" class="info-val muted">(415) 555-1234</div>
 
-    const payload = await resp.json();
-    // payload should be array or object per docs. Return it raw — caller will normalize.
-    return payload;
+              <div class="info-label">Emergency Contacts</div>
+              <div id="pEmergency" class="info-val muted">(415) 555-5678</div>
 
-  } catch (err) {
-    console.warn("API fetch failed or cancelled; falling back to local mock. Error:", err.message);
-    // fallback: load local mock
-    try {
-      const r = await fetch('mock-jessica.json');
-      return await r.json(); // mock is single patient object
-    } catch (e) {
-      console.error("Failed to load local mock:", e);
-      throw e;
-    }
-  }
-}
+              <div class="info-label">Insurance Provider</div>
+              <div id="pInsurance" class="info-val muted">Sunrise Health Assurance</div>
+
+              <button id="showAllBtn" class="cta">Show All Information</button>
+            </div>
+          </div>
+
+          <div class="card labs-card">
+            <h4>Lab Results</h4>
+            <ul class="lab-list">
+              <li>Blood Tests ⬇</li>
+              <li>CT Scans ⬇</li>
+              <li>Radiology Reports ⬇</li>
+              <li>X-Rays ⬇</li>
+            </ul>
+          </div>
+        </aside>
+      </section>
+
+      <footer class="footer">Converted from Adobe XD — Candidate Submission</footer>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
