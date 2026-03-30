@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech.Care Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                </div>
+            <ul class="nav-menu">
+                <li class="active"><a href="#">Patients</a></li> 
+            </ul>
+            <div class="patient-list">
+                <ul>
+                    <li>...</li>
+                    <li>...</li>
+                    <li class="patient-active">
+                        <img src="httpsD://fedskillstest.ct.digital/4.png" alt="Jessica Taylor">
+                        <div>
+                            <span class="patient-name">Jessica Taylor</span>
+                            <span class="patient-details">Female, 28</span>
+                        </div>
+                    </li>
+                    <li>...</li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <section class="diagnosis-history">
+                <h2>Diagnosis History</h2>
+                <div class="chart-container">
+                    <canvas id="bpChart"></canvas>
+                </div>
+            </section>
+
+            <section class="vitals-grid">
+                <div class="vital-card">
+                    <img src="assets/respiratory.png" alt="Respiratory Rate">
+                    <p>Respiratory Rate</p>
+                    <strong id="respiratory-rate">--</strong>
+                    <span id="respiratory-level">--</span>
+                </div>
+                <div class="vital-card">
+                    <img src="assets/temperature.png" alt="Temperature">
+                    <p>Temperature</p>
+                    <strong id="temperature">--</strong>
+                    <span id="temperature-level">--</span>
+                </div>
+                <div class="vital-card">
+                    <img src="assets/heart.png" alt="Heart Rate">
+                    <p>Heart Rate</p>
+                    <strong id="heart-rate">--</strong>
+                    <span id="heart-rate-level">--</span>
+                </div>
+            </section>
+
+            <section class="diagnostic-list">
+                <h2>Diagnostic List</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Problem/Diagnosis</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="diagnostic-list-body">
+                        </tbody>
+                </table>
+            </section>
+        </main>
+
+        <aside class="profile-sidebar">
+            <section class="profile-details">
+                <img id="patient-avatar" src="assets/default-avatar.png" alt="Patient Avatar">
+                <h2 id="patient-name">--</h2>
+                
+                <div class="profile-info">
+                    <img src="assets/calendar.png" alt="DOB">
+                    <div>
+                        <p>Date Of Birth</p>
+                        <strong id="patient-dob">--</strong>
+                    </div>
+                </div>
+                <div class="profile-info">
+                    <img src="assets/gender.png" alt="Gender">
+                    <div>
+                        <p>Gender</p>
+                        <strong id="patient-gender">--</strong>
+                    </div>
+                </div>
+                <div class="profile-info">
+                    <img src="assets/phone.png" alt="Contact">
+                    <div>
+                        <p>Contact Info</p>
+                        <strong id="patient-contact">--</strong>
+                    </div>
+                </div>
+                <div class="profile-info">
+                    <img src="assets/phone.png" alt="Emergency">
+                    <div>
+                        <p>Emergency Contacts</p>
+                        <strong id="patient-emergency">--</strong>
+                    </div>
+                </div>
+                <div class="profile-info">
+                    <img src="assets/insurance.png" alt="Insurance">
+                    <div>
+                        <p>Insurance Provider</p>
+                        <strong id="patient-insurance">--</strong>
+                    </div>
+                </div>
+                
+                <button class="show-all-btn">Show All Information</button>
+            </section>
+
+            <section class="lab-results">
+                <h2>Lab Results</h2>
+                <ul id="lab-results-list">
+                    </ul>
+            </section>
+        </aside>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
